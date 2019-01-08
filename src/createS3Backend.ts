@@ -2,12 +2,14 @@ import { promisify } from "util";
 import fs from "fs";
 
 export interface ICreateBackendParams {
-  requiredVersion: string;
-  backend: {
-    bucket: string;
-    key: string;
-    region: string;
-    profile: string;
+  backendParams: {
+    requiredVersion: string;
+    backend: {
+      bucket: string;
+      key: string;
+      region: string;
+      profile: string;
+    };
   };
 }
 
@@ -17,7 +19,7 @@ export const createS3Backend = async (
   const writeFile = promisify(fs.writeFile);
 
   const terraform = `terraform {
-  required_version = "${params.requiredVersion}"
+  required_version = "${params.backendParams.requiredVersion}"
 
   backend "s3" {
     bucket  = "dev-tfstate"
@@ -31,7 +33,7 @@ export const createS3Backend = async (
 
   return {
     terraform: {
-      required_version: `${params.requiredVersion}`,
+      required_version: `${params.backendParams.requiredVersion}`,
 
       backend: {
         bucket: "dev-tfstate",
