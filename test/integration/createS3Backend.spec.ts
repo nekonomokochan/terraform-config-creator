@@ -1,6 +1,7 @@
 import { createS3Backend } from "../../src/index";
+import fs from "fs";
 
-describe("createBackendTf.integrationTest", () => {
+describe("createS3Backend.integrationTest", () => {
   it("should be able to create a backend.tf", async () => {
     const params = {
       backendParams: {
@@ -14,21 +15,21 @@ describe("createBackendTf.integrationTest", () => {
       }
     };
 
-    const expected = {
-      terraform: {
-        required_version: `${params.backendParams.requiredVersion}`,
+    const expected = `terraform {
+  required_version = "${params.backendParams.requiredVersion}"
 
-        backend: {
-          bucket: "dev-tfstate",
-          key: "network/terraform.tfstate",
-          region: "ap-northeast-1",
-          profile: "nekochans-dev"
-        }
-      }
-    };
+  backend "s3" {
+    bucket  = "${params.backendParams.backend.bucket}"
+    key     = "${params.backendParams.backend.key}"
+    region  = "${params.backendParams.backend.region}"
+    profile = "${params.backendParams.backend.profile}"
+  }
+}`;
 
-    const result = await createS3Backend(params);
+    await createS3Backend(params);
 
-    expect(result).toEqual(expected);
+    const resultString = fs.readFileSync("./backend.tf").toString();
+
+    expect(resultString).toEqual(expected);
   });
 });
