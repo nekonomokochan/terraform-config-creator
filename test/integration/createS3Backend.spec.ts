@@ -4,6 +4,7 @@ import fs from "fs";
 describe("createS3Backend.integrationTest", () => {
   it("should be able to create a backend.tf", async () => {
     const params = {
+      outputPath: "./",
       backendParams: {
         requiredVersion: "0.11.10",
         backend: {

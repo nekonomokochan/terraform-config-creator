@@ -2,6 +2,7 @@ import { promisify } from "util";
 import fs from "fs";
 
 export interface ICreateBackendParams {
+  outputPath: string;
   backendParams: IBackendParams;
 }
 
@@ -35,7 +36,7 @@ export const createS3Backend = async (
 
   const terraform = createS3Template(params.backendParams);
 
-  await writeFile("./backend.tf", terraform);
+  await writeFile(`${params.outputPath}backend.tf`, terraform);
 
   return {
     terraform: {
