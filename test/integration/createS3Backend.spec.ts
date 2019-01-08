@@ -1,10 +1,10 @@
-import { createBackendTf } from "../../src/index";
+import { createS3Backend } from "../../src/index";
 
 describe("createBackendTf.integrationTest", () => {
-  it("should be able to create a backend.tf", () => {
+  it("should be able to create a backend.tf", async () => {
     const params = {
       requiredVersion: "0.11.10",
-      backendS3: {
+      backend: {
         bucket: "dev-tfstate",
         key: "network/terraform.tfstate",
         region: "ap-northeast-1",
@@ -25,6 +25,8 @@ describe("createBackendTf.integrationTest", () => {
       }
     };
 
-    expect(createBackendTf(params)).toEqual(expected);
+    const result = await createS3Backend(params);
+
+    expect(result).toEqual(expected);
   });
 });
