@@ -69,3 +69,4 @@ dist
 
 # output terraform config files
 backend.tf
+provider.tf
