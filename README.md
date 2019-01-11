@@ -15,6 +15,8 @@ Create terraform config files
 
 ## Use With TypeScript
 
+### createS3Backend
+
 ```typescript
 import { createS3Backend } from "@nekonomokochan/terraform-config-creator";
 
@@ -89,7 +91,38 @@ data "terraform_remote_state" "bastion" {
 }
 ```
 
+### createAwsProvider
+
+```typescript
+import { createAwsProvider } from "@nekonomokochan/terraform-config-creator";
+
+(async () => {
+  const params = {
+    outputPath: "./",
+    awsProviderParams: [
+      {
+        version: "=1.54.0",
+        region: "ap-northeast-1",
+        profile: "nekochans-dev"
+      },
+      {
+        version: "=1.54.0",
+        region: "us-east-1",
+        profile: "nekochans-dev",
+        alias: "us_east_1"
+      }
+    ]
+  };
+
+  await createAwsProvider(params);
+})();
+```
+
+`provider.tf` is created in your current directory.
+
 ## Use With JavaScript
+
+### createS3Backend
 
 ```javascript
 (async () => {
@@ -131,6 +164,37 @@ data "terraform_remote_state" "bastion" {
 ```
 
 `backend.tf` is created in your current directory.
+
+### createAwsProvider
+
+```javascript
+(async () => {
+  "use strict";
+
+  const terraformConfigCreator = require("@nekonomokochan/terraform-config-creator");
+
+  const params = {
+    outputPath: "./",
+    awsProviderParams: [
+      {
+        version: "=1.54.0",
+        region: "ap-northeast-1",
+        profile: "nekochans-dev"
+      },
+      {
+        version: "=1.54.0",
+        region: "us-east-1",
+        profile: "nekochans-dev",
+        alias: "us_east_1"
+      }
+    ]
+  };
+
+  await terraformConfigCreator.createAwsProvider(params);
+})();
+```
+
+`provider.tf` is created in your current directory.
 
 # License
 MIT
