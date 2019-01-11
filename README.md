@@ -1,4 +1,8 @@
 # terraform-config-creator
+[![npm version](https://badge.fury.io/js/%40nekonomokochan%2Fterraform-config-creator.svg)](https://badge.fury.io/js/%40nekonomokochan%2Fterraform-config-creator)
+[![Build Status](https://travis-ci.org/nekonomokochan/terraform-config-creator.svg?branch=master)](https://travis-ci.org/nekonomokochan/terraform-config-creator)
+[![Coverage Status](https://coveralls.io/repos/github/nekonomokochan/terraform-config-creator/badge.svg?branch=master)](https://coveralls.io/github/nekonomokochan/terraform-config-creator?branch=master)
+
 Create terraform config files
 
 # Getting Started
