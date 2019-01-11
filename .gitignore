@@ -63,3 +63,9 @@ typings/
 # IDEA Setting File
 .idea
 terraform-config-creator.iml
+
+# output JavaScript files
+dist
+
+# output terraform config files
+backend.tf
