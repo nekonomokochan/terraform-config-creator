@@ -7,12 +7,12 @@ describe("createAwsProvider.integrationTest", () => {
       outputPath: "./",
       awsProviderParams: [
         {
-          version: "=1.54.0",
+          version: "=2.14.0",
           region: "ap-northeast-1",
           profile: "nekochans-dev"
         },
         {
-          version: "=1.54.0",
+          version: "=2.14.0",
           region: "us-east-1",
           profile: "nekochans-dev",
           alias: "us_east_1"
@@ -21,13 +21,13 @@ describe("createAwsProvider.integrationTest", () => {
     };
 
     const expected = `provider "aws" {
-  version = "=1.54.0"
+  version = "=2.14.0"
   region  = "ap-northeast-1"
   profile = "nekochans-dev"
 }
 
 provider "aws" {
-  version = "=1.54.0"
+  version = "=2.14.0"
   region  = "us-east-1"
   profile = "nekochans-dev"
   alias   = "us_east_1"
