@@ -6,7 +6,7 @@ describe("createS3Backend.integrationTest", () => {
     const params = {
       outputPath: "./",
       backendParams: {
-        requiredVersion: "0.11.10",
+        requiredVersion: "0.12.2",
         backend: {
           bucket: "dev-tfstate",
           key: "network/terraform.tfstate",
@@ -38,7 +38,7 @@ describe("createS3Backend.integrationTest", () => {
     const params = {
       outputPath: "./",
       backendParams: {
-        requiredVersion: "0.11.10",
+        requiredVersion: "0.12.2",
         backend: {
           bucket: "dev-tfstate",
           key: "network/terraform.tfstate",
@@ -50,14 +50,14 @@ describe("createS3Backend.integrationTest", () => {
         {
           name: "network",
           bucket: "dev-tfstate",
-          key: "env:/${terraform.env}/network/terraform.tfstate",
+          key: "env:/${terraform.workspace}/network/terraform.tfstate",
           region: "ap-northeast-1",
           profile: "nekochans-dev"
         },
         {
           name: "bastion",
           bucket: "dev-tfstate",
-          key: "env:/${terraform.env}/bastion/terraform.tfstate",
+          key: "env:/${terraform.workspace}/bastion/terraform.tfstate",
           region: "ap-northeast-1",
           profile: "nekochans-dev"
         }
@@ -65,11 +65,11 @@ describe("createS3Backend.integrationTest", () => {
     };
 
     const terraform = {
-      env: "${terraform.env}"
+      workspace: "${terraform.workspace}"
     };
 
     const expected = `terraform {
-  required_version = "0.11.10"
+  required_version = "0.12.2"
 
   backend "s3" {
     bucket  = "${params.backendParams.backend.bucket}"
@@ -84,7 +84,7 @@ data "terraform_remote_state" "network" {
 
   config {
     bucket  = "dev-tfstate"
-    key     = "env:/${terraform.env}/network/terraform.tfstate"
+    key     = "env:/${terraform.workspace}/network/terraform.tfstate"
     region  = "ap-northeast-1"
     profile = "nekochans-dev"
   }
@@ -95,7 +95,7 @@ data "terraform_remote_state" "bastion" {
 
   config {
     bucket  = "dev-tfstate"
-    key     = "env:/${terraform.env}/bastion/terraform.tfstate"
+    key     = "env:/${terraform.workspace}/bastion/terraform.tfstate"
     region  = "ap-northeast-1"
     profile = "nekochans-dev"
   }
