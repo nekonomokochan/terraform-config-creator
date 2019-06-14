@@ -1,6 +1,6 @@
 {
   "name": "@nekonomokochan/terraform-config-creator",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Create terraform config files",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",

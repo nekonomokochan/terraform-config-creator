@@ -82,7 +82,7 @@ describe("createS3Backend.integrationTest", () => {
 data "terraform_remote_state" "network" {
   backend = "s3"
 
-  config {
+  config = {
     bucket  = "dev-tfstate"
     key     = "env:/${terraform.workspace}/network/terraform.tfstate"
     region  = "ap-northeast-1"
@@ -93,7 +93,7 @@ data "terraform_remote_state" "network" {
 data "terraform_remote_state" "bastion" {
   backend = "s3"
 
-  config {
+  config = {
     bucket  = "dev-tfstate"
     key     = "env:/${terraform.workspace}/bastion/terraform.tfstate"
     region  = "ap-northeast-1"

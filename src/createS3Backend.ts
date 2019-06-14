@@ -42,7 +42,7 @@ const createRemoteState = (remoteState: IRemoteState): string => {
   return `data "terraform_remote_state" "${remoteState.name}" {
   backend = "s3"
 
-  config {
+  config = {
     bucket  = "${remoteState.bucket}"
     key     = "${remoteState.key}"
     region  = "${remoteState.region}"
