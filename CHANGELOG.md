@@ -1,10 +1,12 @@
 # Changelog
 
-## 1.0.1 2019-06-13
+## 2.0.0 2019-06-14
 
 feature
 
-- [Available in Terraform v0.12](https://github.com/nekonomokochan/terraform-config-creator/issues/10)
+- [Available in Terraform v0.12](https://github.com/nekonomokochan/terraform-config-creator/pull/13)
+
+## 1.0.1 2019-06-13
 
 update
 
