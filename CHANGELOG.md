@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 2019-07-14
+
+update
+
+- [update npm package](https://github.com/nekonomokochan/terraform-config-creator/issues/14)
+
 ## 2.0.0 2019-06-14
 
 feature
